@@ -2,29 +2,29 @@
 def find_first_common_char(str1, str2)
     sol = [0,0]
     dict = {}
-    if (str1.size < str2.size)
+    # if (str1.size < str2.size)
         firstWord = str1
         secondWord = str2
     #     flipped = false
-    else
-        firstWord = str2
-        secondWord = str1
+    # else
+        # firstWord = str2
+        # secondWord = str1
     #     flipped = true
-    end
+    # end
     firstWord.each_char.with_index do |char, index|
         dict[char] = dict[char] ? dict[char] : index
     end
-    puts dict
+    # puts dict
     secondWord.each_char.with_index do |char, index|
         # puts char, index, dict[char]
         if !!dict[char]
             # puts("found it")
             # if !flipped
-                sol[1] = dict[char]
-                sol[0] = index
+                # sol[1] = dict[char]
+                # sol[0] = index
             # else
-            #     sol[0] = dict[char]
-            #     sol[1] = index
+                sol[0] = dict[char]
+                sol[1] = index
             # end
             return sol
         end
@@ -68,9 +68,18 @@ def render_cross(w1, w2, indexes)
     return sol
 end
 
-# print find_first_common_char("balloon","bat")
-# print find_first_common_char("cat","hat")
-# print find_first_common_char("faint","test")
+def CrossWord(word1, word2)
+    indixes = find_first_common_char(word1, word2)
+    if (indixes)
+        return render_cross(word1,word2,indixes)
+    else
+        return 'no intersection found'
+    end
+end
+
+print find_first_common_char("balloon","bat")
+print find_first_common_char("cat","hat")
+print find_first_common_char("faint","test")
 print find_first_common_char("road","dad")
 print find_first_common_char("dad","road")
 
@@ -78,6 +87,6 @@ print "\n"
 # print render_cross("balloon","bat",[0,0])
 # print render_cross("cat","hat",[1,1])
 # print render_cross("faint","test",[4,0])
-print render_cross("road","dad",[2,1])
-# print render_cross("dad","road", find_first_common_char("dad","road"))
+print render_cross("road","dad",[3,0])
+print render_cross("dad","road", [1,2])
 
