@@ -1,66 +1,50 @@
+# function name: find_first_common_char
+# Parameters: str1 of type string and str2 of type string
+# Output: array of size two with integers presenting the location of the intersection of both strings respectively.
+#         null in case of no intersection.
 
 def find_first_common_char(str1, str2)
     sol = [0,0]
     dict = {}
-    # if (str1.size < str2.size)
-        firstWord = str1
-        secondWord = str2
-    #     flipped = false
-    # else
-        # firstWord = str2
-        # secondWord = str1
-    #     flipped = true
-    # end
-    firstWord.each_char.with_index do |char, index|
+    
+    str1.each_char.with_index do |char, index|
         dict[char] = dict[char] ? dict[char] : index
     end
-    # puts dict
-    secondWord.each_char.with_index do |char, index|
-        # puts char, index, dict[char]
+
+    str2.each_char.with_index do |char, index|
         if !!dict[char]
-            # puts("found it")
-            # if !flipped
-                # sol[1] = dict[char]
-                # sol[0] = index
-            # else
-                sol[0] = dict[char]
-                sol[1] = index
-            # end
+            sol[0] = dict[char]
+            sol[1] = index
             return sol
         end
     end
     return null
 end
 
+# Function name: render_cross
+# Parameters: w1 of type string, w2 of type string, indexes array of two integers
+# Output: a string that when printed displays the words in crossword format intersecting on the indexes provided.
+
 def render_cross(w1, w2, indexes)
-    # puts(w1)
-    # puts(w2)
+
     x_border = w1.size
     y_border = w2.size
     w1_index = indexes[1]
     w2_index = indexes[0]
-    # puts(x_border)
-    # puts(y_border)
-    # pry
+
     sol = ""
     for j in 0...y_border
         for i in 0..x_border
-        # puts("i is #{i}")
         
             if(i == x_border)
-                # puts("new Line")
                 sol << "\n"
-                
             elsif(i == w2_index || j == w1_index)
                 if(j == w1_index)
-                    # puts w1[i]
                     sol << w1[i]
                 elsif(i == w2_index)
-                    # puts w2[j]
                     sol << w2[j]
                 end
             else
-                # puts ' '
                 sol << ' '
             end
         end
@@ -68,12 +52,16 @@ def render_cross(w1, w2, indexes)
     return sol
 end
 
+## function name: CrossWord 
+# Parameters: word1 of type string, word2 of type string
+# Output: string presenting the crossword of the two words or an error message
+
 def CrossWord(word1, word2)
     indixes = find_first_common_char(word1, word2)
     if (indixes)
         return render_cross(word1,word2,indixes)
     else
-        return 'no intersection found'
+        return 'error: no intersection found'
     end
 end
 
