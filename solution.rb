@@ -77,16 +77,21 @@ def CrossWord(word1, word2)
     end
 end
 
-print find_first_common_char("balloon","bat")
-print find_first_common_char("cat","hat")
-print find_first_common_char("faint","test")
-print find_first_common_char("road","dad")
-print find_first_common_char("dad","road")
+# print find_first_common_char("balloon","bat")
+# print find_first_common_char("cat","hat")
+# print find_first_common_char("faint","test")
+# print find_first_common_char("road","dad")
+# print find_first_common_char("dad","road")
 
+print CrossWord("balloon","bat")
+print CrossWord("cat","hat")
+print CrossWord("faint","test")
+print CrossWord("road","dad")
+print CrossWord("dad","road")
 print "\n"
 # print render_cross("balloon","bat",[0,0])
 # print render_cross("cat","hat",[1,1])
 # print render_cross("faint","test",[4,0])
-print render_cross("road","dad",[3,0])
-print render_cross("dad","road", [1,2])
+# print render_cross("road","dad",[3,0])
+# print render_cross("dad","road", [1,2])
 
