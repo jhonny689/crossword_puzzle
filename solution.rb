@@ -18,7 +18,7 @@ def find_first_common_char(str1, str2)
             return sol
         end
     end
-    return null
+    return nil
 end
 
 # Function name: render_cross
