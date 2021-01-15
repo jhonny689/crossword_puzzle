@@ -7,14 +7,14 @@ def find_first_common_char(str1, str2)
     sol = [0,0]
     dict = {}
     
-    str1.each_char.with_index do |char, index|
+    str2.each_char.with_index do |char, index|
         dict[char] = dict[char] ? dict[char] : index
     end
 
-    str2.each_char.with_index do |char, index|
+    str1.each_char.with_index do |char, index|
         if !!dict[char]
-            sol[0] = dict[char]
-            sol[1] = index
+            sol[0] = index
+            sol[1] = dict[char]
             return sol
         end
     end
@@ -57,9 +57,9 @@ end
 # Output: string presenting the crossword of the two words or an error message
 
 def CrossWord(word1, word2)
-    indixes = find_first_common_char(word1, word2)
-    if (indixes)
-        return render_cross(word1,word2,indixes)
+    indexes = find_first_common_char(word1, word2)
+    if (indexes)
+        return render_cross(word1,word2,indexes)
     else
         return 'error: no intersection found'
     end
@@ -67,15 +67,16 @@ end
 
 # print find_first_common_char("balloon","bat")
 # print find_first_common_char("cat","hat")
-# print find_first_common_char("faint","test")
+print find_first_common_char("faint","test")
 # print find_first_common_char("road","dad")
 # print find_first_common_char("dad","road")
+print "\n"
 
 print CrossWord("balloon","bat")
 print CrossWord("cat","hat")
 print CrossWord("faint","test")
 print CrossWord("road","dad")
-print CrossWord("dad","road")
+# print CrossWord("dad","road")
 print "\n"
 # print render_cross("balloon","bat",[0,0])
 # print render_cross("cat","hat",[1,1])
